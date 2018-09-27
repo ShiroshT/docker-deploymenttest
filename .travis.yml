@@ -8,3 +8,22 @@ before_install:
 script:
   - docker run ickyatcity/docker-deploymenttest npm run test -- --coverage
 
+# https://docs.travis-ci.com/user/deployment/elasticbeanstalk/
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-testingapp"
+  env: "DockerTestingapp-env"
+  bucket_name: "elasticbeanstalk-us-east-1-944658883672"
+  bucket_path: "docker-testingapp"
+  on:
+    branch: master
+  access_key_id: $AWS_KEY_ID
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
+
+# https://docs.travis-ci.com/user/deployment/elasticbeanstalk/
+
+
+
