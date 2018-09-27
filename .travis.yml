@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  -docker build -t ickyatcity/docker-deploymenttest -f Dockerfile.dev
+
+script:
+  - docker run ickyatcity/docker-deploymenttest npm run test -- --coverage
+
+  
